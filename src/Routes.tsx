@@ -2,23 +2,13 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
-import Product from './pages/Product'
+import Detail from './pages/Detail'
 
 const Routes = () => (
   <Switch>
-    <Route
-      exact
-      path='/'
-      component={ Home }
-    />
-    <Route
-      exact
-      path='/products/:id'
-      component={ Product }
-    />
+    <Route exact path="/" component={Home} />
+    <Route exact path="/:name" component={Detail} />
   </Switch>
 )
 
 export default Routes
-
-

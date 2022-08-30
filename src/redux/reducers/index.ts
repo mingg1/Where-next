@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
-import product from './product'
+import countries from './countries'
 import ui from './ui'
 
 const createRootReducer = () =>
   combineReducers({
-    product,
+    countries,
     ui,
   })
 

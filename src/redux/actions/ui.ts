@@ -1,14 +1,10 @@
-import {
-  TOGGLE_DIALOG,
-  ToggleDialogAction,
-  DialogType,
-} from '../../types'
+import { TOGGLE_FAV_LIST, ToggleDialogAction, DialogType } from '../../types'
 
 export function toggleDialog(dialog: DialogType): ToggleDialogAction {
   return {
-    type: TOGGLE_DIALOG,
+    type: TOGGLE_FAV_LIST,
     payload: {
       dialog,
-    }
+    },
   }
 }

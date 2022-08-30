@@ -1,47 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Button from '@mui/material/Button'
+// import { Link } from 'react-router-dom'
 
-import { Product, AppState } from '../types'
-import { addProduct, removeProduct } from '../redux/actions'
+import { AppState } from '../types'
 
-const names = ['Apple', 'Orange', 'Avocado', 'Banana', 'Cucumber', 'Carrot']
+import SearchBar from '../components/SearchBar'
+import NavBar from '../components/NavBar'
+import { getAllCountries } from '../redux/slices/countriesSlice'
+import store from '../redux/store'
 
 export default function Home() {
-  const dispatch = useDispatch()
-  const products = useSelector((state: AppState) => state.product.inCart)
+  const dispatch = useDispatch<typeof store.dispatch>()
+  const { countries } = useSelector((state: AppState) => state)
+  console.log(countries)
 
-  const handleAddProduct = () => {
-    const product: Product = {
-      id: (+new Date()).toString(),
-      name: names[Math.floor(Math.random() * names.length)],
-      price: +(Math.random() * 10).toFixed(2),
-    }
-    dispatch(addProduct(product))
-  }
+  useEffect(() => {
+    dispatch(getAllCountries())
+  }, [dispatch])
 
   return (
     <>
-      <h1>Home page</h1>
-      {products.length <= 0 && <div>No products in cart</div>}
-      <ul>
-        {products.map((p) => (
-          <li key={p.id}>
-            <Link to={`/products/${p.id}`}>{`${p.name} - $${p.price}`}</Link>
-            <Button
-              variant="outlined"
-              color="error"
-              onClick={() => dispatch(removeProduct(p))}
-            >
-              Remove
-            </Button>
-          </li>
-        ))}
-      </ul>
-      <Button onClick={handleAddProduct} variant="contained">
-        Add product
-      </Button>
+      <h2>{countries.isLoading ? 'hi' : 'done'}</h2>
+      <NavBar />
+      <SearchBar />
     </>
   )
 }
