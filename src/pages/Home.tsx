@@ -1,28 +1,16 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-// import { Link } from 'react-router-dom'
-
-import { AppState } from '../types'
-
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Rootstate } from '../redux/store'
 import SearchBar from '../components/SearchBar'
-import NavBar from '../components/NavBar'
-import { getAllCountries } from '../redux/slices/countriesSlice'
-import store from '../redux/store'
+import Table from '../components/Table'
 
 export default function Home() {
-  const dispatch = useDispatch<typeof store.dispatch>()
-  const { countries } = useSelector((state: AppState) => state)
-  console.log(countries)
-
-  useEffect(() => {
-    dispatch(getAllCountries())
-  }, [dispatch])
+  const { countryData } = useSelector((state: Rootstate) => state)
 
   return (
     <>
-      <h2>{countries.isLoading ? 'hi' : 'done'}</h2>
-      <NavBar />
       <SearchBar />
+      {countryData.isLoading ? 'loading...' : <Table />}
     </>
   )
 }
