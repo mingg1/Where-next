@@ -1,17 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import countriesReducer from './slices/countriesSlice'
 import favoritesReducer from './slices/favoritesSlice'
-import favListOpenedReducer from './slices/favListOpenedSlice'
+import uiReducer from './slices/uiSlice'
 
 const store = configureStore({
   reducer: {
     countryData: countriesReducer,
     favoriteCountries: favoritesReducer,
-    favListOpened: favListOpenedReducer,
+    ui: uiReducer,
   },
 })
-
-export type Rootstate = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
 
 export default store

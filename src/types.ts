@@ -1,12 +1,15 @@
-// Action types
-export const ADD_COUNTRY = 'ADD_COUNTRY'
-export const REMOVE_COUNTRY = 'REMOVE_COUNTRY'
-export const TOGGLE_FAV_LIST = 'TOGGLE_FAV_LIST'
-export const CHANGE_THEME = 'CHANGE_THEME'
+import store from './redux/store'
 
 export enum ThemeType {
   light = 'light',
   dark = 'dark',
+}
+
+export enum SortingType {
+  nameAscending = 'nameAscending',
+  nameDescending = 'nameDescending',
+  populationAscending = 'populationAscending',
+  populationDescending = 'populationDescending',
 }
 
 export type SystemError = {
@@ -14,7 +17,6 @@ export type SystemError = {
 }
 
 export type Country = {
-  cca2: string
   name: { common: string }
   currencies: {
     [key: string]: {
@@ -22,7 +24,7 @@ export type Country = {
       symbol: string
     }
   }
-  capital: string[] | string
+  capital: string[]
   region: string
   languages: {
     [key: string]: string
@@ -31,34 +33,30 @@ export type Country = {
   flags: {
     png: string
   }
+  flag: string
 }
 
-export type ProductState = {
-  inCart: Country[]
+export type FavoriteCountry = {
+  name: string
+  flag: string
 }
 
 export type CountriesState = {
   countries: Country[]
+  searchResults: Country[]
   country: Country
   isLoading: boolean
   error: SystemError | null
+  nameSorting: SortingType | null
+  populationSorting: SortingType | null
 }
 
-export type FavoritesState = {
-  favorites: Partial<Country>[]
-}
+export type FavoriteCountriesState = FavoriteCountry[]
 
-export type DrawerState = {
-  isOpened: boolean
-}
-
-// Using dynamic keys from an enum
 export type UiState = {
-  dialogOpen: {}
+  drawerOpen: boolean
+  theme: ThemeType
 }
 
-export type AppState = {
-  //product: ProductState
-  ui: UiState
-  countries: CountriesState
-}
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
