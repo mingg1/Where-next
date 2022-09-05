@@ -1,8 +1,8 @@
 import { Button } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleList } from '../redux/slices/favListOpenedSlice'
-import { AppDispatch } from '../redux/store'
+import { changeTheme, toggleFavList } from '../redux/slices/uiSlice'
+import { AppDispatch } from '../types'
 
 const NavBar = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -11,18 +11,24 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          Country finder
+          Where next?
           <span role="img" aria-label="pushpin">
             📍
           </span>
         </li>
         <li>
-          <Button>Theme</Button>
+          <Button
+            onClick={() => {
+              dispatch(changeTheme())
+            }}
+          >
+            Theme
+          </Button>
         </li>
         <li>
           <Button
             onClick={() => {
-              dispatch(toggleList())
+              dispatch(toggleFavList())
             }}
           >
             Cart

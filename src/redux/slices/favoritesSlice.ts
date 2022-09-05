@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Country } from './../../types'
+import { FavoriteCountriesState } from './../../types'
 
-const initialState: Partial<Country>[] = []
+const initialState: FavoriteCountriesState = []
 
 export const favoritesSlice = createSlice({
   name: 'favorites',
@@ -11,7 +11,7 @@ export const favoritesSlice = createSlice({
       state.push(action.payload)
     },
     removeFavCountry: (state, action) => {
-      state.filter((country) => country.name !== action.payload.name)
+      return state.filter((country) => country.name !== action.payload)
     },
   },
 })
