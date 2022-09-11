@@ -47,6 +47,7 @@ export type CountriesState = {
   country: Country
   isLoading: boolean
   error: SystemError | null
+  isSearching: boolean
   nameSorting: SortingType | null
   populationSorting: SortingType | null
 }

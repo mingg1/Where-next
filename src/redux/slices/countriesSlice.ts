@@ -1,3 +1,9 @@
+import {
+  sortByNameAsc,
+  sortByNameDsc,
+  sortByPopulationAsc,
+  sortByPopulationDsc,
+} from './../../utils/helper'
 import axios from 'axios'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { CountriesState, SortingType, SystemError } from './../../types'
@@ -19,6 +25,7 @@ const initialState: CountriesState = {
   },
   isLoading: false,
   error: null,
+  isSearching: false,
   nameSorting: null,
   populationSorting: null,
 }
@@ -63,14 +70,18 @@ export const countriesSlice = createSlice({
         state.nameSorting === null ||
         state.nameSorting === SortingType.nameDescending
       ) {
-        state.countries = state.countries.sort((a, b) =>
-          a.name.common.localeCompare(b.name.common)
-        )
+        if (state.searchResults.length !== 0) {
+          state.searchResults = sortByNameDsc(state.searchResults)
+        } else {
+          state.countries = sortByNameDsc(state.countries)
+        }
         state.nameSorting = SortingType.nameAscending
       } else {
-        state.countries = state.countries.sort((a, b) =>
-          b.name.common.localeCompare(a.name.common)
-        )
+        if (state.searchResults.length !== 0) {
+          state.searchResults = sortByNameAsc(state.searchResults)
+        } else {
+          state.countries = sortByNameAsc(state.countries)
+        }
         state.nameSorting = SortingType.nameDescending
       }
     },
@@ -79,14 +90,18 @@ export const countriesSlice = createSlice({
         state.populationSorting === null ||
         state.populationSorting === SortingType.populationDescending
       ) {
-        state.countries = state.countries.sort(
-          (a, b) => a.population - b.population
-        )
+        if (state.searchResults.length !== 0) {
+          state.searchResults = sortByPopulationDsc(state.searchResults)
+        } else {
+          state.countries = sortByPopulationDsc(state.countries)
+        }
         state.populationSorting = SortingType.populationAscending
       } else {
-        state.countries = state.countries.sort(
-          (a, b) => b.population - a.population
-        )
+        if (state.searchResults.length !== 0) {
+          state.searchResults = sortByPopulationAsc(state.searchResults)
+        } else {
+          state.countries = sortByPopulationAsc(state.countries)
+        }
         state.populationSorting = SortingType.populationDescending
       }
     },
@@ -94,6 +109,10 @@ export const countriesSlice = createSlice({
       state.searchResults = state.countries.filter((country) =>
         country.name.common.toLowerCase().includes(action.payload)
       )
+    },
+    setIsSearching: (state, action: { payload: boolean }) => {
+      if (!action.payload) state.searchResults = []
+      state.isSearching = action.payload
     },
   },
 
@@ -129,5 +148,6 @@ export const {
   sortCountryListByName,
   sortCountryListByPopulation,
   searchCountries,
+  setIsSearching,
 } = countriesSlice.actions
 export default countriesSlice.reducer
