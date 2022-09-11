@@ -1,4 +1,4 @@
-import { Button } from '@mui/material'
+import { IconButton } from '@mui/material'
 import React from 'react'
 import { AppDispatch, FavoriteCountry } from '../types'
 import { DeleteOutlined } from '@mui/icons-material'
@@ -12,18 +12,16 @@ type FavoriteCountryItemProps = {
 const FavoriteCountryItem = ({ country }: FavoriteCountryItemProps) => {
   const dispatch = useDispatch<AppDispatch>()
 
+  const handleClicked = () => dispatch(removeFavCountry(country.name))
+
   return (
-    <div>
+    <li>
       <h2>{country.flag}</h2>
       <Link to={`/${country.name}`}>{country.name}</Link>
-      <Button
-        onClick={() => {
-          dispatch(removeFavCountry(country.name))
-        }}
-      >
+      <IconButton onClick={handleClicked}>
         <DeleteOutlined />
-      </Button>
-    </div>
+      </IconButton>
+    </li>
   )
 }
 

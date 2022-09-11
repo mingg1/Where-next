@@ -1,52 +1,57 @@
 import React from 'react'
-import { TableCell, TableHead, TableRow, Button } from '@mui/material'
-import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
-import { AppDispatch, RootState, SortingType } from '../types'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   sortCountryListByName,
   sortCountryListByPopulation,
 } from '../redux/slices/countriesSlice'
+import { AppDispatch, RootState, SortingType } from '../types'
+import { TableCell, TableHead, TableRow, IconButton } from '@mui/material'
+import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
 
 const TableHeader = () => {
   const dispatch = useDispatch<AppDispatch>()
   const {
     countryData: { nameSorting, populationSorting },
   } = useSelector((state: RootState) => state)
+
+  const handleNameSortBtnClicked = () => dispatch(sortCountryListByName())
+  const handlePopulationBtnClicked = () =>
+    dispatch(sortCountryListByPopulation())
+
   return (
     <TableHead>
       <TableRow>
         <TableCell align="center">Flag</TableCell>
-        <TableCell align="center">
+        <TableCell align="center" className="table--column-btn--container">
           Name
-          <Button
-            onClick={() => {
-              dispatch(sortCountryListByName())
-            }}
+          <IconButton
+            disableRipple
+            size="large"
+            onClick={handleNameSortBtnClicked}
           >
             {nameSorting === SortingType.nameDescending ? (
-              <KeyboardArrowUp />
+              <KeyboardArrowUp fontSize="inherit" />
             ) : (
-              <KeyboardArrowDown />
+              <KeyboardArrowDown fontSize="inherit" />
             )}
-          </Button>
+          </IconButton>
         </TableCell>
         <TableCell align="center">Capital city</TableCell>
         <TableCell align="center">Region</TableCell>
         <TableCell align="center">Language</TableCell>
-        <TableCell align="center">
+        <TableCell align="center" className="table--column-btn--container">
           Population
-          <Button
-            onClick={() => {
-              dispatch(sortCountryListByPopulation())
-            }}
+          <IconButton
+            size="large"
+            disableRipple
+            onClick={handlePopulationBtnClicked}
           >
             {populationSorting === SortingType.populationDescending ? (
-              <KeyboardArrowUp />
+              <KeyboardArrowUp fontSize="inherit" />
             ) : (
-              <KeyboardArrowDown />
+              <KeyboardArrowDown fontSize="inherit" />
             )}
-          </Button>
+          </IconButton>
         </TableCell>
         <TableCell></TableCell>
       </TableRow>

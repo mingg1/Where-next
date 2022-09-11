@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { FavoriteBorder, Favorite } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
-import { addFavCountry, removeFavCountry } from '../redux/slices/favoritesSlice'
 import { FavoriteCountry, AppDispatch, RootState } from '../types'
+import { addFavCountry, removeFavCountry } from '../redux/slices/favoritesSlice'
+import { FavoriteBorder, Favorite } from '@mui/icons-material'
+import { IconButton } from '@mui/material'
 
 const AddFavoriteButton = ({ name, flag }: FavoriteCountry) => {
   const dispatch = useDispatch<AppDispatch>()
@@ -12,18 +12,20 @@ const AddFavoriteButton = ({ name, flag }: FavoriteCountry) => {
     (favCountry) => favCountry.name === name
   )
 
+  const handleClicked = () => {
+    isInList
+      ? dispatch(removeFavCountry(name))
+      : dispatch(addFavCountry({ name, flag }))
+  }
+
   return (
-    <>
-      <Button
-        onClick={() => {
-          isInList
-            ? dispatch(removeFavCountry(name))
-            : dispatch(addFavCountry({ name, flag }))
-        }}
-      >
-        {isInList ? <Favorite /> : <FavoriteBorder />}
-      </Button>
-    </>
+    <IconButton size="large" disableRipple={true} onClick={handleClicked}>
+      {isInList ? (
+        <Favorite fontSize="inherit" />
+      ) : (
+        <FavoriteBorder fontSize="inherit" />
+      )}
+    </IconButton>
   )
 }
 
