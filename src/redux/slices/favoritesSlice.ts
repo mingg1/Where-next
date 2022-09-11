@@ -7,7 +7,13 @@ export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    addFavCountry: (state, action) => {
+    addFavCountry: (
+      state,
+      action: { payload: { name: string; flag: string } }
+    ) => {
+      if (state.some((country) => country.name === action.payload.name)) {
+        return state
+      }
       state.push(action.payload)
     },
     removeFavCountry: (state, action) => {
