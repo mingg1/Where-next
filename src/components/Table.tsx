@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import { Table as MTable, TableContainer } from '@mui/material'
-import TableHeader from './TableHeader'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCountries } from '../redux/slices/countriesSlice'
 import { AppDispatch, RootState } from '../types'
+import TableHeader from './TableHeader'
 import TableBody from './TableBody'
+import { Table as MTable, TableContainer } from '@mui/material'
 
 const Table = () => {
   const {
-    countryData: { countries, searchResults },
+    countryData: { countries, searchResults, isSearching },
   } = useSelector((state: RootState) => state)
   const dispatch = useDispatch<AppDispatch>()
 
@@ -17,12 +17,10 @@ const Table = () => {
   }, [dispatch, countries.length])
 
   return (
-    <TableContainer>
+    <TableContainer className="table">
       <MTable area-label="country list">
         <TableHeader />
-        <TableBody
-          list={searchResults.length !== 0 ? searchResults : countries}
-        />
+        <TableBody list={isSearching === true ? searchResults : countries} />
       </MTable>
     </TableContainer>
   )
