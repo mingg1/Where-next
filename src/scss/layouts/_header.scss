@@ -1,0 +1,54 @@
+@use '../utilities/variables' as v;
+@use '../utilities/mixins';
+
+nav {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  box-shadow: v.$box-shadow;
+  display: flex;
+  background-color: v.$primary-color;
+  height: 80px;
+
+  ul {
+    @include mixins.flex-box--row;
+
+    justify-content: flex-end;
+
+    padding: 0 v.$gap;
+    padding-right: 32px;
+    flex-grow: 1;
+
+    li:first-child {
+      flex: 1;
+
+      &:hover {
+        border: none;
+      }
+
+      &.showMenu {
+        visibility: hidden;
+        flex: 0;
+      }
+    }
+
+    &.showMenu {
+      flex: 1;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: none;
+      a {
+        font-size: 2rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &.showMenu {
+    display: flex;
+    padding-right: 32px;
+    height: 100%;
+    transition: height 1s;
+    flex-direction: column-reverse;
+  }
+}

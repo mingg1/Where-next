@@ -1,0 +1,31 @@
+@use './variables' as v;
+
+@mixin flex-box--row {
+  display: flex;
+  gap: v.$gap;
+  align-items: center;
+}
+
+@mixin flex-box--column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$gap;
+}
+
+@mixin section-container {
+  @include flex-box--column;
+  min-height: calc(40vh + 100px);
+  margin-bottom: 100px;
+  padding-top: 100px;
+}
+
+@mixin no-line-link {
+  text-decoration: none;
+}
+
+@mixin main-font($weight, $size) {
+  font-family: 'Encode Sans', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+}

@@ -1,0 +1,62 @@
+@use '../utilities/mixins';
+@use '../utilities/variables' as v;
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600;800&display=swap');
+
+body {
+  font-family: 'Encode Sans', sans-serif;
+  color: v.$text-color;
+
+  .dark * {
+    color: white;
+  }
+}
+
+.app-title {
+  @include mixins.main-font(800, 2rem);
+  color: #04293a;
+  letter-spacing: 3px;
+}
+
+h1 {
+  @include mixins.main-font(600, 2.3rem);
+  margin-bottom: 1.6rem;
+}
+
+.loading-msg,
+.error-msg,
+.intro {
+  @include mixins.main-font(900, 3rem);
+  height: 12vh;
+  text-align: center;
+  margin-top: 12vh;
+}
+
+h2 {
+  @include mixins.main-font(500, 1.2rem);
+  color: #a66cff;
+  margin-bottom: 0.6rem;
+}
+
+p {
+  @include mixins.main-font(400, 1.6rem);
+}
+
+.card--content__top--title {
+  @include mixins.main-font(600, 1.4rem);
+}
+
+a,
+th.MuiTableCell-root {
+  @include mixins.main-font(500, 1.2rem);
+  text-decoration: none;
+  padding-bottom: 2px;
+  color: black;
+}
+
+td.MuiTableCell-root {
+  @include mixins.main-font(400, 1rem);
+}
+
+input[type='text'] {
+  @include mixins.main-font(500, 1.3rem);
+}
