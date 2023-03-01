@@ -1,9 +1,49 @@
-# Frontend project - read carefully.
-## Installation
+# Where next?
+
+[Link to the demo 🌏](https://where-next-2v5zzd7zt-mingg1.vercel.app/)
+
+An application where you can check country information around the world
+
+## Used technology
+
+* Redux
+* Redux-thunk
+* ReactJS
+* TypeScript
+* SCSS
+* Deployed to Vercel
+
+<br>
+
+## Features
+
+- Light / Dark mode <br>
+<img width="480" alt="스크린샷 2023-03-01 15 56 55" src="https://user-images.githubusercontent.com/61379336/222165667-14f712d0-a783-4c43-8e60-6281cbe4e8e9.png"><img width="480" alt="스크린샷 2023-03-01 15 57 46" src="https://user-images.githubusercontent.com/61379336/222165722-c910d73b-73f9-4d92-b537-23c63394ec07.png">
+
+- Favorite country list <br>
+When the heart button in the country list is clicked, the corresponding country is saved in the favorite list.
+User can access the list by clicking the heart button on the right side of the header.
+When it's clicked, the list will be shown on the right side of the page. User can delete a country from the list anytime.
+<img width="1440" alt="스크린샷 2023-03-01 15 58 14" src="https://user-images.githubusercontent.com/61379336/222165717-d19d261e-eb6e-46b8-9592-3c0a491ca4c8.png">
+
+- Search mode <br>
+User can search a country / countries by name
+<img width="1440" alt="스크린샷 2023-03-01 15 57 30" src="https://user-images.githubusercontent.com/61379336/222165661-8c6aa0b8-0054-46da-9bc0-32e8dcd9a9da.png">
+
+- Sorting <br>
+User can sort the list by country <b>name</b> or <b>population</b> in ascending / descending order
+<img width="480" alt="스크린샷 2023-03-01 16 09 35" src="https://user-images.githubusercontent.com/61379336/222165654-efe6aedd-5bf9-4f70-a800-e462257a7f63.png">  <img width="480" alt="스크린샷 2023-03-01 16 09 45" src="https://user-images.githubusercontent.com/61379336/222165644-49ed9741-921f-4f29-b6e4-647159e3621b.png">
+
+- Detailed information <br>
+When one of the countries clicked from the list, user can check detailed information of the specific country.<br>
+(Capital city, Population, Languages, Currencies)<br>
+<img width="1440" alt="스크린샷 2023-03-01 15 58 36" src="https://user-images.githubusercontent.com/61379336/222165712-4456a2b3-29c2-4b60-97e3-090229c7ea5e.png">
+
+<br>
+
+## Installation in a local machine
 
 You should use either `npm` or `yarn` but not both. It's recommended to use `yarn`
-
-This template already comes with all the needed packages. In case you want to install manually, check the dependencies in the `package.json` file.
 
 To install, run:
 
@@ -18,121 +58,3 @@ yarn start
 ````
 
 <br />
-
-### Features that come with this template
-
-* Redux
-* Redux-thunk
-* Redux-saga
-* React-router
-* TypeScript
-* Prettier
-* ESLint
-* Husky & lint-staged
-
-<br />
-
-## Requirements of the project:
-
-
-
-1. **Tech stack:**
-
-   1. React
-
-   2. Redux (old or Toolkit)
-
-   3. TypeScript (optional **if** you are new to JS and would like to work on your JS skills)
-
-   4. Styling library is your choice.
-
-   5. Fork the repo and do the required changes
-
-   6. if you are going to update any package, make sure it's compatible with other packages
-
-
-
-2. **Features you are required to implement:**
-
-   1. Display countries in a table
-   2. User can:
-      1. change the theme to different color
-      2. Search a country
-      3. Filter from the countries
-      4. Link to a specific country to read more data (by a link I mean when the user clicks on a specific country row)
-      5. Add country to a cart (no duplication)
-      6. Remove a country from a cart
-
-<br />
-
-## How should you approach the assignment?
-
-<br />
-
-### As an individual (if you are working alone)
-
-1. Make sure you don't spend too much time on a task (if you are, it means you need help or you will fall behind if you don't ask for help)
-2. **DO NOT** copy-paste a bunch of code and then try to figure out how to make it work. what you should be doing is taking it one step at a time.
-3. **MAKE SURE** to **PLAN** then execute. when you plan a feature you should visualise how it would be coded and what you need to complete it. the more time you spend on planning and thinking about the steps you should do, the easier and faster the coding would be.
-4. If you have a problem that you are trying to solve, split it into smaller problems and make sure you solve one and then move to the next one.
-5. Start with the features as the following (my recommendation if you want a plan on how to start):
-   1. theme switching
-   2. display all countries in the table
-   3. display country details on a different page (when clicking on a specific country)
-   4. Add and Remove a country from the cart
-   5. Search functionality
-   6. Filtering
-6. **Make sure** you finish a feature at a time and then commit the changes
-7. **OPEN a PR** as soon as you get your first task or feature implemented.
-8. **PUSH** to GitHub daily
-
-
-<br />
-
-### As a team
-
-1. Read all the above there are a lot of points that you should follow
-2. The group leader should send me a DM stating who are the team members
-3. You should have a leader that leads the project and helps with giving tasks
-4. Review each other's PRs and merge ONLY if it's approved by 1-2 mates. would be great if you have one person manages the PRs and provide help when needed
-5. Have a daily checkup
-6. use Trello board to manage tasks (Invite me to the board so I could track who's doing what)
-
-<br />
-
-## Do you have a problem and want quick help?
-
-Sending me/Vincent a message saying my app is broken would help **no one**.
-
-**you should have the following:**
-
-1. what are you trying to do
-2. when the problem happens at what point
-3. screenshot of the code flow
-
-<br />
-
-## Reminder
-
-* The frontend project is the most important assignment of the frontend module.
-  * I'll evaluate your project where this evaluation would go to the BD (sales) team.
-  * if you are working as a team I'll see your Trello board and follow up with your team. to make sure everyone gets the evaluation that he/she deserves.
-* There will be a frontend test (multi-choice type of questions) before starting the backend module.
-
-<br />
-
-## FAQ
-
-
-* What if I finished earlier?
-  * You can always have extra tasks; reach out to me if you need help on what to add.
-* Can I add more features?
-  * Sure you can, but first, you are required to finish the requirements
-* I'm progressing slowly! I'm stuck!
-  * Reach out to me or Vincent. (Remember you have a deadline to meet)
-* I'm not good at styling! I'm still a newbie in JS!
-  * styling could be ignored and just focus on the functionalities
-  * JS/TS is giving you a headache? book a 1on1 or keep on struggling alone😢
-* Can I know my own evaluation?
-  * this data is between me and the BD team
-  * you can still book 1on1 session with me or send me a DM where I would tell you my opinion of your tech/soft skills.
